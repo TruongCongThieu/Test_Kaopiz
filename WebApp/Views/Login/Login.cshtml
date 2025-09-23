@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+@section Styles {
+    <link href="~/css/login-modern.css" asp-append-version="true" rel="stylesheet">
+}
+<div class="auth-viewport">
+    <div class="card auth-card">
+        <div class="card-body p-4 p-md-5">
+            <h1 class="text-center auth-title mb-4">Đăng nhập</h1>
+
+            <div class="tab-toggle mb-4">
+                <button type="button" class="btn btn-gradient" id="tabLogin">Đăng nhập</button>
+                <button type="button" class="btn btn-outline" id="tabSignup">Đăng ký</button>
+            </div>
+
+            <form id="formLogin">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="mb-3">
+                    <div class="input-group">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu" required>
+                        <button class="btn btn-outline-secondary" type="button"><i class="togglePassword fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Ghi nhớ đăng nhập</label>
+                    </div>
+                </div>
+                <div class="d-grid mb-2">
+                    <button type="submit" id="btnLogin" class="btn btn-gradient py-2">Đăng nhập</button>
+                </div>
+                <div class="text-center mt-4">
+                    <span class="muted">Bạn chưa có tài khoản? </span><a href="#" id="linkSignup" class="link-pink">Đăng ký ngay</a>
+                </div>
+            </form>
+
+            <form id="registrationForm" class="hide">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="userNameRegister" name="userNameRegister" placeholder="Họ và tên" required autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="emailRegister" name="emailRegister" placeholder="Email" required autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="passwordRegister" name="passwordRegister" placeholder="Mật khẩu" required autocomplete="off">
+                        <button class="btn btn-outline-secondary" type="button"><i class="togglePassword fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="confirmPasswordRegister" name="confirmPasswordRegister" placeholder="Nhập lại mật khẩu" required autocomplete="off">
+                        <button class="btn btn-outline-secondary" type="button"><i class="togglePassword fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" id="btnSignup" class="btn btn-gradient py-2">Đăng ký</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+@section Scripts {
+    <script src="~/controllers/login/login.js" asp-append-version="true"></script>
+    <script>
+        var loginObj = new LoginController(); 
+        loginObj.initialize();
+
+        const tabLogin = document.getElementById('tabLogin');
+        const tabSignup = document.getElementById('tabSignup');
+        const formLogin = document.getElementById('formLogin');
+        const formSignup = document.getElementById('registrationForm');
+        const linkSignup = document.getElementById('linkSignup');
+
+        function showLogin(){
+            tabLogin.classList.add('btn-gradient');
+            tabLogin.classList.remove('btn-outline');
+            tabSignup.classList.add('btn-outline');
+            tabSignup.classList.remove('btn-gradient');
+            formLogin.classList.remove('hide');
+            formSignup.classList.add('hide');
+        }
+        function showSignup(){
+            tabSignup.classList.add('btn-gradient');
+            tabSignup.classList.remove('btn-outline');
+            tabLogin.classList.add('btn-outline');
+            tabLogin.classList.remove('btn-gradient');
+            formSignup.classList.remove('hide');
+            formLogin.classList.add('hide');
+        }
+
+        tabLogin.addEventListener('click', showLogin);
+        tabSignup.addEventListener('click', showSignup);
+        linkSignup.addEventListener('click', function(e){ e.preventDefault(); showSignup(); });
+    </script>
+}

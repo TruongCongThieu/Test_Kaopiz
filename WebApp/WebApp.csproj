@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<TypeScriptDisableWarnings>true</TypeScriptDisableWarnings>
+	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="Controllers\Mobile\**" />
+	  <Compile Remove="wwwroot\assets\**" />
+	  <Compile Remove="wwwroot\lib\ckeditor\**" />
+	  <Content Remove="Controllers\Mobile\**" />
+	  <Content Remove="wwwroot\assets\**" />
+	  <Content Remove="wwwroot\lib\ckeditor\**" />
+	  <EmbeddedResource Remove="Controllers\Mobile\**" />
+	  <EmbeddedResource Remove="wwwroot\assets\**" />
+	  <EmbeddedResource Remove="wwwroot\lib\ckeditor\**" />
+	  <None Remove="Controllers\Mobile\**" />
+	  <None Remove="wwwroot\assets\**" />
+	  <None Remove="wwwroot\lib\ckeditor\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Cronos" Version="0.8.2" />
+		<PackageReference Include="Google.Apis.Auth" Version="1.70.0" />
+		<PackageReference Include="Google.Apis.Drive.v3" Version="1.69.0.3783" />
+		<PackageReference Include="Hangfire" Version="1.8.9" />
+		<PackageReference Include="Hangfire.Core" Version="1.8.9" />
+		<PackageReference Include="Hangfire.Dashboard.BasicAuthorization" Version="1.0.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.3.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+		<PackageReference Include="reCAPTCHA.AspNetCore" Version="3.0.10" />
+		<PackageReference Include="Serilog.Enrichers.Environment" Version="2.3.0" />
+		<PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+		<PackageReference Include="Serilog.Formatting.Compact" Version="2.0.0" />
+		<PackageReference Include="Serilog.Settings.Configuration" Version="8.0.0" />
+		<PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+		<PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Logs\" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+<style>
+    html, body { height: 100%; margin: 0; }
+    .home-title {
+        font-weight: 800;
+        font-size: 56px;
+        letter-spacing: .5px;
+        text-shadow: 0 4px 18px rgba(0,0,0,.25);
+        text-align: center;
+        margin: 0;
+    }
+
+    .logout-btn {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        background: #ff2e78;
+        border: none;
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        box-shadow: 0 8px 20px rgba(255,46,120,.35);
+        transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+        opacity: 0.95;
+    }
+
+        .logout-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(255,46,120,.45);
+            opacity: 1;
+        }
+
+        .logout-btn i {
+            font-size: 18px;
+        }
+</style>
+
+<a class="logout-btn" href="javascript:void(0);" onclick="logout();">
+    <i class="bi bi-box-arrow-right"></i>
+    <span>Đăng xuất</span>
+    </a>
+
+<div class="home-wrap">
+    <h1 class="home-title">Trang chủ</h1>
+    </div>
+
+<script>
+    function logout() {
+        $.ajax({
+            type: "GET",
+            url: "/logout",
+            success: function () {
+                window.location.href = "/dang-nhap";
+            }
+        });
+    };
+</script>
